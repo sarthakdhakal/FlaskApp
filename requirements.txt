@@ -1,0 +1,6 @@
+Flask
+tensorflow
+mediapipe
+opencv-python
+Pillow
+gTTS

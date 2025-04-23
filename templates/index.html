@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign Language Detection</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      video,
+      canvas,
+      img {
+        border: 2px solid #555;
+        border-radius: 10px;
+        margin: 10px;
+      }
+      #prediction {
+        font-size: 1.5rem;
+        margin: 20px 0;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sign Language Detection</h1>
+    <video id="video" width="320" height="240" autoplay></video>
+    <br />
+    <button onclick="captureAndPredict()">Predict</button>
+    <button onclick="toggleHand()">Show/Hide Hand Crop</button>
+    <br />
+    <canvas id="capture" width="224" height="224" hidden></canvas>
+    <img
+      id="hand-preview"
+      width="224"
+      height="224"
+      style="display: none"
+      alt="Cropped Hand"
+    />
+    <div id="prediction">Prediction: ...</div>
+    <audio id="tts-audio" hidden></audio>
+
+    <!-- MediaPipe Hands -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.min.js"></script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
